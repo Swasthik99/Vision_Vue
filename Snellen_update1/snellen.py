@@ -1,7 +1,7 @@
 import tkinter as tk
 
 class SnellenChartApp:
-    def __init__(self, master, optotypes, visual_acuities, test_distance=20, screen_size_cm=(34, 19), screen_resolution=(1920, 1080)):
+    def __init__(self, master, optotypes, visual_acuities, test_distance=20, screen_size_cm=(34, 19), screen_resolution=(1920, 1080), scaling_factor=(1.25)):
         self.master = master
         self.master.title("Snellen Chart")
         self.canvas = tk.Canvas(master, width=screen_resolution[0], height=screen_resolution[1])
@@ -11,6 +11,7 @@ class SnellenChartApp:
         self.test_distance = test_distance
         self.screen_size_cm = screen_size_cm
         self.screen_resolution = screen_resolution
+        self.scaling_factor = scaling_factor
         self.row_index = 0
         self.letter_index = 0
         self.update_letter()
@@ -24,9 +25,9 @@ class SnellenChartApp:
         ppm_width = self.screen_resolution[0] / (self.screen_size_cm[0] / 100)
         ppm_height = self.screen_resolution[1] / (self.screen_size_cm[1] / 100)
 
-        # Calculate pixel size
-        pixel_width_size = size_meters * ppm_width
-        pixel_height_size = size_meters * ppm_height
+        # Calculate pixel size with scaling factor
+        pixel_width_size = size_meters * ppm_width / self.scaling_factor
+        pixel_height_size = size_meters * ppm_height / self.scaling_factor
 
         return int(pixel_width_size), int(pixel_height_size)
 
@@ -42,7 +43,7 @@ class SnellenChartApp:
         size_formula = self.calculate_size_based_on_formula(denominator)
         self.print_letter_size(optotype, size_formula)
 
-        # Calculate pixel size based on the laptop's resolution
+        # Calculate pixel size based on the laptop's resolution with scaling factor
         pixel_size = self.calculate_pixel_size(size_formula)
 
         self.canvas.delete("all")
@@ -60,7 +61,7 @@ class SnellenChartApp:
             self.row_index += 1
 
         if self.row_index < len(self.optotypes):
-            self.master.after(3000, self.update_letter)
+            self.master.after(8000, self.update_letter)
 
 def main():
     # Define the structure of the custom Snellen-like chart
@@ -81,9 +82,12 @@ def main():
     # Define corresponding visual acuity levels
     visual_acuities = ['20/200', '20/100', '20/70', '20/50', '20/40', '20/30', '20/25', '20/20', '20/15', '20/13', '20/10']
 
+    # Set the scaling factor (adjust as needed)
+    scaling_factor = 1.2273
+
     # Create the Tkinter application
     root = tk.Tk()
-    app = SnellenChartApp(root, optotypes, visual_acuities)
+    app = SnellenChartApp(root, optotypes, visual_acuities, scaling_factor=scaling_factor)
 
     root.mainloop()
 
