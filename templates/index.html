@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>VISION_VUE</h1>
+    <h2>ONE TEST AT A TIME</h2>
+    <h3>WELCOME<h3>
+
+    <h2>Instructions</h2>
+    <p>Please select the appropriate eye chart based on the patient's ability to read English alphabets.</p>
+
+    <form action="/eye-chart-selection" method="post">
+        <input type="submit" value="Proceed to Eye Chart Selection">
+    </form>
+
+    {% if show_eye_chart_options %}
+    <div class="flex-container">
+        <form action="/start-test" method="post">
+            <div class="radio-group">
+                <input type="radio" id="snellen-chart" name="eye_chart" value="snellen">
+                <label for="snellen-chart" class="snellen-chart">Snellen Chart</label>
+                
+                <input type="radio" id="e-chart" name="eye_chart" value="e-chart">
+                <label for="e-chart" class="e-chart">E-chart</label>
+            </div>
+            <input type="submit" value="Start Test">
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>

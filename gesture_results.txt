@@ -1,0 +1,11 @@
+Expected: Down, Predicted: Down, Result: Correct ,  Visual Acuity: 20/100
+
+Expected: Right, Predicted: Left, Result: Wrong ,  Visual Acuity: 20/100
+
+Expected: Down, Predicted: Left, Result: Wrong ,  Visual Acuity: 20/70
+
+Expected: Down, Predicted: Left, Result: Wrong ,  Visual Acuity: 20/70
+
+
+
+Poor vision. Must consult doctor soon.

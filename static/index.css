@@ -1,0 +1,101 @@
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Arial Black', sans-serif;
+    color: #2d4a9a;
+    margin-top: 50px;
+    font-size: 36px;
+}
+
+h2 {
+    color: #2d4a9a;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+h3 {
+    color: #777;
+    font-size: 20px;
+}
+
+/* Button styles */
+button[type="submit"],
+input[type="submit"] {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add some space between the buttons */
+    font-size: 18px;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background-color: #388e3c;
+}
+
+/* Additional button styling */
+input[type="submit"][value="Proceed to Eye Chart Selection"],
+input[type="submit"][value="Start Test"] {
+    background-color: #2196f3;
+    color: #fff;
+    border-radius: 25px; /* Curved corners */
+}
+
+input[type="submit"][value="Proceed to Eye Chart Selection"]:hover,
+input[type="submit"][value="Start Test"]:hover {
+    background-color: #0e3863;
+}
+
+/* Radio button styles */
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group input[type="radio"] + label {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: #0e3863;
+}
+
+/* Form and paragraph styles */
+form {
+    margin-top: 30px;
+}
+
+p {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Style for flex container */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+/* Style for spacing between buttons */
+.flex-container button {
+    margin: 10px;
+}

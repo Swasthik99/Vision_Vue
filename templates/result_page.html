@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result Page</title>
+</head>
+<body>
+    <h1>Report</h1>
+    <div class="patient-info">
+        <h2>Patient Details</h2>
+        <p><strong>Name:</strong> {{ patient_info.name }}</p>
+        <p><strong>Age:</strong> {{ patient_info.age }}</p>
+        <p><strong>Date:</strong> {{ patient_info.date }}</p>
+        <p><strong>Phone:</strong> {{ patient_info.phone }}</p>
+    </div>
+    <div class="result-content">
+        <h2>Test Results</h2>
+        <pre>{{ file_content }}</pre>
+    </div>
+</body>
+</html>

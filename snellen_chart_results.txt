@@ -1,0 +1,8 @@
+Expected		Recognized		Result		Visual Acuity
+-------------------------------------------------------------------
+[z			nill			Failed			20/200]			
+[f			nill			Failed			20/100]			
+[p			nill			Failed			20/100]			
+[t			nill			Failed			20/70]			
+[o			nill			Failed			20/70]			
+[z			nill			Failed			20/70]			

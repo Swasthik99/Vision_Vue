@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snellen Chart Test Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='snellen_test_page.css') }}">
+</head>
+<body>
+    <h1>Snellen Chart Test Page</h1>
+    
+    
+    <!-- Add a form with a button to trigger the execution of distance.py -->
+    <form action="/run-distance" method="post">
+        <input type="submit" value="Run Distance Test">
+    </form>
+    
+    <!-- Display the result of distance.py if available -->
+    {% if distance_result %}
+    <div class="distance-result-container">
+        <h2>Distance Test Result:</h2>
+        <p class="distance-result">{{ distance_result }}</p>
+    </div>
+    {% endif %}
+
+     <!-- Display the Snellen chart results 
+     {% if snellen_chart_results %}
+     <div class="snellen-chart-results-container">
+         <h2>Snellen Chart Results:</h2>
+         <p class="snellen-chart-results"><pre>{{ snellen_chart_results }}</pre></p>
+     </div>
+     {% endif %}-->
+
+    <!-- Additional paragraph and button -->
+    <h3>Please read all instructions carefully before proceeding:</h3>
+    <p><i>
+        <ul>
+        <li>Ensure you are in a well-lit room with minimal glare on the screen.</li>
+        <li>Sit at a distance from your laptop. This distance will be measured using your laptop's camera.</li>
+        <li>Once you start the test, letters of various sizes will be displayed on the screen.</li>
+        <li>Read the letters aloud as they appear. Your voice will be recorded and evaluated .</li>
+        <li>Based on your responses, a report will be generated indicating your visual acuity.</li>
+        <li>If the test results indicate any issues, consider consulting an eye care professional for a comprehensive eye examination.</li>
+        </ul>
+    </i></p>
+    <!-- Form to trigger the execution of snellen_voice.py -->
+    <form id="voice-test-form" action="/run-voice-test" method="post">
+        <input type="hidden" name="eye_chart" value="{{ eye_chart }}">
+        <label for="check-instructions">
+            <input type="checkbox" id="check-instructions"><b>I have read all instructions</b>
+
+        </label>
+        <button type="submit" id="go-button" disabled>Go</button>
+        <!--<a href="{{ url_for('show_result', content=snellen_chart_results) }}" target="_blank" class="result-button">Result</a>-->
+    </form>
+    
+    <script>
+        // Enable the button when the checkbox is checked
+        document.getElementById('check-instructions').addEventListener('change', function() {
+            document.getElementById('go-button').disabled = !this.checked;
+        });
+    </script>
+
+</body>
+</html>

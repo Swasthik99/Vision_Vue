@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-chart Test Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='e_chart_test_page.css') }}">
+</head>
+<body>
+    <h1>E-chart Test Page</h1>
+    
+    <h3>Please read all instructions carefully before proceeding:</h3>
+    <p><i>
+        <ul>
+            <li> you are in a well-lit room with minimal glare on the screen.</li>
+            <li>The letter "E" will be displayed on the screen in different orientations(up, down, left, right).</li>
+            <li>Use hand gestures to indicate the direction of the "E" (pointing up, down, left, or right).</li>
+            <li>The camera will detect your gestures.</li>
+            <li>Ensure your gestures are clear and performed within the camera's field of view.</li>
+            <li>Based on your responses, a report will be generated </li>
+            <li>Result indicats your visual acuity, consider consulting an eye care professional for a comprehensive eye examination.</li>
+    </i></p>
+    <!-- Add more details specific to the E-chart test page -->
+
+    <!-- Display the E chart results 
+    {% if snellen_chart_results %}
+    <div class="gesture-results-container">
+        <h2>E-Chart Results:</h2>
+        <p class="gesture-results"><pre>{{ gesture_results }}</pre></p>
+    </div>
+    {% endif %}-->
+
+    <form id="e-chart-test-form" action="/run-e-chart" method="post">
+        <label for="check-instructions">
+            <input type="checkbox" id="check-instructions"> <b>I have read all instructions</b>
+        </label>
+        <button type="submit" id="go-button" disabled>Go</button>
+        <!--<a href="{{ url_for('show_result', content=snellen_chart_results) }}" target="_blank" class="result-button">Result</a>-->
+    </form>
+
+    
+    <!-- JavaScript to enable/disable the Go button -->
+    <script>
+        document.getElementById('check-instructions').addEventListener('change', function() {
+            document.getElementById('go-button').disabled = !this.checked;
+        });
+    </script>
+    
+</body>
+</html>
